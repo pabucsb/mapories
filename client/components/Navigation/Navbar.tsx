@@ -15,6 +15,7 @@ import {
 import { Code, Group } from '@mantine/core';
 // import { MantineLogo } from '@mantinex/mantine-logo';
 import classes from './Navbar.module.css';
+import { useRouter } from 'next/navigation'
 
 const data = [
   { link: '', label: 'Home', icon: IconBellRinging },
@@ -28,6 +29,7 @@ const data = [
 
 export function Navbar() {
   const [active, setActive] = useState('Billing');
+  const router = useRouter();
 
   const links = data.map((item) => (
     <a
@@ -38,6 +40,11 @@ export function Navbar() {
       onClick={(event) => {
         event.preventDefault();
         setActive(item.label);
+        if(item.label == "Globe") {
+          router.push('/globe')
+        }else if(item.label == "Home") {
+          router.push('/')
+        }
       }}
     >
       <item.icon className={classes.linkIcon} stroke={1.5} />
