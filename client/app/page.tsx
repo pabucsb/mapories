@@ -1,11 +1,12 @@
 import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
 import { Welcome } from '../components/Welcome/Welcome';
+import { Hero } from '../components/Hero/Hero';
+import RootLayout from './layout';
 
-export default function HomePage() {
+export default function HeroPage() {
   return (
-    <>
-      <Welcome />
-      <ColorSchemeToggle />
-    </>
+      <RootLayout useAppShell={false}>
+        <Hero />
+      </RootLayout>
   );
 }

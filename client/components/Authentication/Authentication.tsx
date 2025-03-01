@@ -16,8 +16,13 @@ import {
   import { useForm } from '@mantine/form';
   import { upperFirst, useToggle } from '@mantine/hooks';
   import { GoogleButton } from './GoogleButton';
-
+  import { useRouter } from 'next/navigation';
+ 
   export function AuthenticationForm(props: PaperProps) {
+    const router = useRouter();
+    const handleAuth = () => {
+      router.push('/home');
+    }
     const [type, toggle] = useToggle(['login', 'register']);
     const form = useForm({
       initialValues: {
@@ -40,7 +45,7 @@ import {
         </Text>
   
         <Group grow mb="md" mt="md">
-          <GoogleButton radius="xl">Google</GoogleButton>
+          <GoogleButton radius="xl" onClick={handleAuth}>Google</GoogleButton>
           {/* <TwitterButton radius="xl">Twitter</TwitterButton> */}
         </Group>
   

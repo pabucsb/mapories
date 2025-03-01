@@ -43,7 +43,7 @@ export function Navbar() {
         if(item.label == "Globe") {
           router.push('/globe')
         }else if(item.label == "Home") {
-          router.push('/')
+          router.push('/home')
         }
       }}
     >

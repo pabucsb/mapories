@@ -1,3 +1,4 @@
+
 import '@mantine/core/styles.css';
 
 
@@ -12,7 +13,8 @@ export const metadata = {
   description: 'I am using Mantine with Next.js!',
 };
 
-export default function RootLayout({ children }: { children: any }) {
+export default function RootLayout({ children, useAppShell }: { children: any, useAppShell: boolean }) {
+
   return (
     <html lang="en" {...mantineHtmlProps}>
       <head>
@@ -25,9 +27,13 @@ export default function RootLayout({ children }: { children: any }) {
       </head>
       <body>
         <MantineProvider theme={theme}>
-          <AppStructure>
-            {children}
-          </AppStructure>
+        {useAppShell ? (
+            <AppStructure>
+              {children}
+            </AppStructure>
+          ) : (
+            children
+          )}
         </MantineProvider>
       </body>
     </html>
