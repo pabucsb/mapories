@@ -1,7 +1,11 @@
+
 import '@mantine/core/styles.css';
 
+
 import React from 'react';
-import { ColorSchemeScript, mantineHtmlProps, MantineProvider } from '@mantine/core';
+import { ColorSchemeScript, mantineHtmlProps, MantineProvider} from '@mantine/core';
+import { Navbar } from '../components/Navigation/Navbar';
+import { AppStructure } from '../components/AppShell/AppShell';
 import { theme } from '../theme';
 
 export const metadata = {
@@ -9,7 +13,8 @@ export const metadata = {
   description: 'I am using Mantine with Next.js!',
 };
 
-export default function RootLayout({ children }: { children: any }) {
+export default function RootLayout({ children, useAppShell }: { children: any, useAppShell: boolean }) {
+
   return (
     <html lang="en" {...mantineHtmlProps}>
       <head>
@@ -21,7 +26,15 @@ export default function RootLayout({ children }: { children: any }) {
         />
       </head>
       <body>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+        <MantineProvider theme={theme}>
+        {useAppShell ? (
+            <AppStructure>
+              {children}
+            </AppStructure>
+          ) : (
+            children
+          )}
+        </MantineProvider>
       </body>
     </html>
   );
